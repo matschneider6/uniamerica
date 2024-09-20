@@ -33,6 +33,7 @@ function displayUserData() {
     document.getElementById('deleteButton').style.display = 'inline';
   }
 }
+window.addEventListener('load', displayUserData);//adcicionado
 
 // Função para limpar o formulário
 function clearForm() {
