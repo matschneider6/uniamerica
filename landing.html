@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revita — Recupere seu corpo e sua vitalidade na menopausa</title>
+  <meta name="description" content="O método que ajuda mulheres na menopausa a perder peso e recuperar a vitalidade sem dietas impossíveis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:    #C2185B;
+      --rose-light: #F48FB1;
+      --rose-pale: #FFF0F5;
+      --plum:    #6A1B4D;
+      --gold:    #D4A04A;
+      --dark:    #1A1A2E;
+      --gray:    #6B7280;
+      --light:   #F9FAFB;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #f0e6ec;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--rose);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--gold); }
+
+    nav a.btn-nav {
+      background: var(--rose);
+      color: #fff;
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    nav a.btn-nav:hover { background: var(--plum); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 5% 80px;
+      background: linear-gradient(135deg, var(--rose-pale) 0%, #fff5fb 50%, #fff 100%);
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-text { flex: 1; min-width: 300px; max-width: 600px; }
+
+    .badge {
+      display: inline-block;
+      background: var(--rose-pale);
+      color: var(--rose);
+      border: 1px solid var(--rose-light);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--rose);
+    }
+
+    .hero p.sub {
+      font-size: 1.15rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .hero p.sub strong { color: var(--dark); font-weight: 600; }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(194,24,91,0.12);
+      flex: 0 0 380px;
+      min-width: 300px;
+    }
+
+    .form-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+
+    .form-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-card input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      transition: border 0.2s;
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+    }
+
+    .form-card input:focus {
+      outline: none;
+      border-color: var(--rose);
+    }
+
+    .form-card input::placeholder { color: #9CA3AF; }
+
+    .btn-primary {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--rose), var(--plum));
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .form-privacy {
+      font-size: 0.75rem;
+      color: #9CA3AF;
+      text-align: center;
+      margin-top: 0.8rem;
+    }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .proof-bar {
+      background: var(--dark);
+      padding: 1.2rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .proof-bar .stat {
+      text-align: center;
+      color: #fff;
+    }
+
+    .proof-bar .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+    }
+
+    .proof-bar .stat span {
+      font-size: 0.8rem;
+      color: #9CA3AF;
+    }
+
+    /* ── PAIN SECTION ── */
+    .section { padding: 80px 5%; }
+    .section-center { text-align: center; max-width: 720px; margin: 0 auto; }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 1rem;
+    }
+
+    .section p.intro {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 3rem;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .pain-card {
+      background: var(--rose-pale);
+      border-left: 4px solid var(--rose);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    .pain-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+    .pain-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--plum); }
+    .pain-card p { font-size: 0.9rem; color: var(--gray); }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--light); padding: 80px 5%; }
+
+    .steps {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 220px;
+      max-width: 280px;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--rose), var(--plum));
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+
+    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.9rem; color: var(--gray); }
+
+    /* ── WHAT YOU GET ── */
+    .benefits { padding: 80px 5%; }
+
+    .benefit-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid #F3E8EF;
+      border-radius: 14px;
+      padding: 1.4rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--rose-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .benefit-item h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .benefit-item p { font-size: 0.85rem; color: var(--gray); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--rose-pale); padding: 80px 5%; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testi-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(194,24,91,0.08);
+    }
+
+    .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 1rem; }
+
+    .testi-card p {
+      font-size: 0.95rem;
+      color: var(--dark);
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose-light), var(--rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .testi-author div strong { font-size: 0.9rem; display: block; }
+    .testi-author div span { font-size: 0.8rem; color: var(--gray); }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      padding: 100px 5%;
+      background: linear-gradient(135deg, var(--plum), var(--rose));
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-final h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-final p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2.5rem; }
+
+    .cta-form {
+      display: flex;
+      gap: 0.8rem;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .cta-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .cta-form input:focus { outline: 2px solid var(--gold); }
+
+    .btn-gold {
+      padding: 0.9rem 2rem;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-gold:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #9CA3AF;
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: var(--rose-light); }
+
+    /* ── SUCCESS MESSAGE ── */
+    .success-msg {
+      display: none;
+      background: #D1FAE5;
+      color: #065F46;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 0.8rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding-top: 100px; gap: 2rem; }
+      .form-card { flex: unset; width: 100%; }
+      .proof-bar { gap: 1.5rem; }
+      .cta-form { flex-direction: column; }
+      .cta-form input, .btn-gold { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Revi<span>ta</span></div>
+    <a href="#lead" class="btn-nav">Quero acesso gratuito</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="badge">Saúde feminina na menopausa</div>
+      <h1>
+        Seu corpo mudou.<br/>
+        Mas você <em>não precisa</em><br/>
+        aceitar isso.
+      </h1>
+      <p class="sub">
+        O método que ajuda mulheres na menopausa a
+        <strong>perder os quilos extras</strong> e
+        <strong>recuperar a vitalidade</strong>
+        — sem dietas impossíveis, sem culpa.
+      </p>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:#4B5563; font-size:0.95rem;">
+        <li>✅ Protocolo baseado em ciência hormonal</li>
+        <li>✅ Comunidade de mulheres que entendem o que você sente</li>
+        <li>✅ Resultados em 4 semanas ou seu dinheiro de volta</li>
+      </ul>
+    </div>
+
+    <!-- LEAD FORM -->
+    <div class="form-card" id="lead">
+      <h2>Acesso gratuito por tempo limitado</h2>
+      <p>Entre na lista e receba o guia "5 passos para recuperar seu corpo na menopausa"</p>
+      <form id="heroForm" onsubmit="handleSubmit(event, 'heroSuccess')">
+        <input type="text" name="name" placeholder="Seu nome" required />
+        <input type="email" name="email" placeholder="Seu melhor e-mail" required />
+        <input type="tel" name="whatsapp" placeholder="WhatsApp (opcional)" />
+        <button type="submit" class="btn-primary">Quero meu acesso gratuito →</button>
+      </form>
+      <div class="success-msg" id="heroSuccess">
+        🎉 Perfeito! Verifique seu e-mail em instantes.
+      </div>
+      <p class="form-privacy">🔒 Seus dados estão seguros. Sem spam, prometemos.</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar">
+    <div class="stat">
+      <strong>4.800+</strong>
+      <span>mulheres na lista de espera</span>
+    </div>
+    <div class="stat">
+      <strong>92%</strong>
+      <span>relatam melhora em 30 dias</span>
+    </div>
+    <div class="stat">
+      <strong>-6 kg</strong>
+      <span>média no primeiro mês</span>
+    </div>
+    <div class="stat">
+      <strong>4.9 ⭐</strong>
+      <span>avaliação média</span>
+    </div>
+  </div>
+
+  <!-- PAIN SECTION -->
+  <section class="section">
+    <div class="section-center">
+      <h2>Você se reconhece nisso?</h2>
+      <p class="intro">
+        A menopausa não avisa. De repente, o corpo que você conhecia
+        parece não ser mais seu — e ninguém te prepara para isso.
+      </p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">⚖️</div>
+        <h3>Peso que não sai mais</h3>
+        <p>Você come igual de antes, mas os quilos chegam e não vão embora. A barriga cresce mesmo sem mudar nada.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🔥</div>
+        <h3>Energia que sumiu</h3>
+        <p>Acordar cansada virou rotina. Aquela disposição de antes foi embora e você não sabe como trazer de volta.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">💔</div>
+        <h3>Vitalidade que diminuiu</h3>
+        <p>O desejo por intimidade foi caindo aos poucos. Você sente que perdeu uma parte importante de si mesma.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">😔</div>
+        <h3>Se sentindo invisível</h3>
+        <p>A sensação de que seu melhor tempo ficou para trás. Que ninguém fala sobre o que você está passando.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="section-center">
+      <h2>Como o Revita funciona</h2>
+      <p class="intro">
+        Um método completo, pensado especificamente para o corpo feminino
+        na menopausa — hormonal, emocional e prático.
+      </p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Mapeamos seu perfil</h3>
+        <p>Questionário rápido sobre seus sintomas, rotina e objetivos para personalizar sua jornada.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Seu protocolo personalizado</h3>
+        <p>Plano alimentar anti-inflamatório + movimentos específicos para menopausa, sem enrolação.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Comunidade + suporte</h3>
+        <p>Grupo privado com mulheres que entendem o que você sente. Especialistas disponíveis toda semana.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Resultados reais</h3>
+        <p>Acompanhamento de progresso, ajustes semanais e celebração de cada conquista.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="section-center">
+      <h2>O que você recebe</h2>
+      <p class="intro">Tudo que você precisa em um só lugar.</p>
+    </div>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <div class="benefit-icon">🥗</div>
+        <div>
+          <h3>Plano alimentar para menopausa</h3>
+          <p>Cardápio anti-inflamatório que respeita as mudanças hormonais do seu corpo.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💪</div>
+        <div>
+          <h3>Treinos de 20 minutos</h3>
+          <p>Foco em força e mobilidade — o que realmente funciona nessa fase da vida.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">❤️</div>
+        <div>
+          <h3>Guia de vitalidade íntima</h3>
+          <p>Informações baseadas em ciência para recuperar o bem-estar e a conexão com seu corpo.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">😴</div>
+        <div>
+          <h3>Protocolo do sono</h3>
+          <p>Técnicas para dormir melhor, reduzir ondas de calor noturnas e acordar renovada.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">👩‍⚕️</div>
+        <div>
+          <h3>Lives semanais com especialistas</h3>
+          <p>Ginecologistas, nutricionistas e psicólogas respondendo suas dúvidas ao vivo.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💬</div>
+        <div>
+          <h3>Comunidade privada</h3>
+          <p>Grupo exclusivo com mulheres na mesma fase. Apoio real, sem julgamento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-center">
+      <h2>Mulheres que transformaram sua vida</h2>
+      <p class="intro">Histórias reais de mulheres que decidiram não aceitar menos do que merecem.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Em 6 semanas perdi 7 kg sem passar fome. Mas o que mais me surpreendeu foi recuperar a energia e a vontade de me sentir mulher de novo. Isso não tem preço."</p>
+        <div class="testi-author">
+          <div class="avatar">MA</div>
+          <div>
+            <strong>Maria Aparecida</strong>
+            <span>52 anos, São Paulo</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Achei que era normal me sentir assim. O Revita me mostrou que não. Meu marido percebeu a diferença antes de mim — ele diz que eu voltei a ser eu mesma."</p>
+        <div class="testi-author">
+          <div class="avatar">CR</div>
+          <div>
+            <strong>Claudia Rodrigues</strong>
+            <span>49 anos, Belo Horizonte</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Tentei mil dietas. Nenhuma funcionou na menopausa. Aqui entendi por quê e o que realmente funciona. Menos 5 kg e dormindo muito melhor em 30 dias."</p>
+        <div class="testi-author">
+          <div class="avatar">FS</div>
+          <div>
+            <strong>Fernanda Santos</strong>
+            <span>55 anos, Curitiba</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <h2>Seu novo começo começa hoje</h2>
+    <p>Junte-se a milhares de mulheres que decidiram florescer — não sobreviver — na menopausa.</p>
+    <form class="cta-form" onsubmit="handleSubmit(event, 'ctaSuccess')">
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required />
+      <button type="submit" class="btn-gold">Quero acesso grátis</button>
+    </form>
+    <div class="success-msg" id="ctaSuccess" style="max-width:480px; margin:0.8rem auto 0;">
+      🎉 Incrível! Você está na lista. Verifique seu e-mail.
+    </div>
+    <p style="margin-top:1.2rem; font-size:0.85rem; opacity:0.6;">Sem spam. Cancele quando quiser.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>Revita</strong> — Todos os direitos reservados.</p>
+    <p style="margin-top:0.4rem;">Feito com amor para mulheres que merecem mais.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e, successId) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name?.value || '',
+        email: form.email.value,
+        whatsapp: form.whatsapp?.value || '',
+        timestamp: new Date().toISOString(),
+        source: window.location.href
+      };
+
+      // Salva localmente (substituir por API/webhook depois)
+      const leads = JSON.parse(localStorage.getItem('revita_leads') || '[]');
+      leads.push(data);
+      localStorage.setItem('revita_leads', JSON.stringify(leads));
+
+      // Mostra mensagem de sucesso
+      form.style.display = 'none';
+      document.getElementById(successId).style.display = 'block';
+
+      // TODO: substituir pelo seu endpoint real
+      // fetch('/api/leads', { method: 'POST', body: JSON.stringify(data) })
+    }
+  </script>
+
+</body>
+</html>
